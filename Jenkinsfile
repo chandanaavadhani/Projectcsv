@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        AWS_CREDENTIALS = 'saml-jenkins-creds'  // ID for the stored AWS credentials in Jenkins
-        AWS_DEFAULT_REGION = 'us-east-2'        // Region where your AWS resources are deployed
+        AWS_CREDENTIALS = 'saml-jenkins-creds'
+        AWS_DEFAULT_REGION = 'us-east-2'
     }
 
     stages {
@@ -16,10 +16,9 @@ pipeline {
         stage('Setup Python Environment') {
             steps {
                 script {
-                    // Ensure the shell environment is appropriate for your Jenkins setup.
-                    sh '''
+                    bat '''
                     python -m venv venv
-                    source venv/bin/activate  // Use 'source' for Unix/Linux shells, adjust if on Windows
+                    venv\\Scripts\\activate.bat
                     pip install -r requirements.txt
                     '''
                 }
@@ -28,14 +27,14 @@ pipeline {
 
         stage('Build Lambda Package') {
             steps {
-                sh 'sam build'
+                bat 'sam build'
             }
         }
 
         stage('Deploy to AWS') {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CREDENTIALS]]) {
-                    sh 'sam deploy --no-fail-on-empty-changeset --stack-name my-lambda-function --capabilities CAPABILITY_IAM --region $AWS_DEFAULT_REGION'
+                    bat 'sam deploy --no-fail-on-empty-changeset --stack-name my-lambda-function --capabilities CAPABILITY_IAM --region %AWS_DEFAULT_REGION%'
                 }
             }
         }
@@ -49,13 +48,8 @@ pipeline {
             echo 'Deployment failed.'
         }
         always {
-            script {
-                // Clean up only if not on the master branch
-                if (env.BRANCH_NAME != 'master') {
-                    sh 'echo Cleaning up...'
-                    sh 'rm -rf venv'
-                }
-            }
+            bat 'echo Cleaning up...'
+            bat 'rd /s /q venv'
         }
     }
 }
