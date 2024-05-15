@@ -17,7 +17,7 @@ pipeline {
             steps {
                 script {
                     bat '''
-                    C:\\Program Files\\python.exe -m venv venv
+                    "C:\\Program Files\\python.exe" -m venv venv
                     venv\\Scripts\\activate.bat
                     pip install -r requirements.txt
                     '''
