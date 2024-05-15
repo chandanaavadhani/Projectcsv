@@ -39,7 +39,7 @@ pipeline {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CREDENTIALS]]) {
                     bat '''
                     venv\\Scripts\\activate.bat
-                    "C:\\Program Files\\Amazon\\AWSSAMCLI\\bin\\sam.exe" deploy --no-fail-on-empty-changeset --stack-name my-lambda-function --capabilities CAPABILITY_IAM --region us-east-2
+                    "C:\\Program Files\\Amazon\\AWSSAMCLI\\bin\\sam.exe" deploy --no-fail-on-empty-changeset --stack-name csv-project --capabilities CAPABILITY_IAM --region us-east-2
                     '''
                 }
             }
