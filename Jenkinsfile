@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        AWS_CREDENTIALS = 'saml-jenkins-creds'
+        AWS_CREDENTIALS = 'saml-jenkins-creds'  // Make sure this is properly configured in Jenkins Credentials
         AWS_DEFAULT_REGION = 'us-east-2'
     }
 
@@ -25,21 +25,15 @@ pipeline {
             }
         }
 
-        stage('Build Lambda Package') {
-            steps {
-                bat '''
-                venv\\Scripts\\activate.bat
-                "C:\\Program Files\\Amazon\\AWSSAMCLI\\bin\\sam.exe" build
-                '''
-            }
-        }
-
-        stage('Deploy to AWS') {
+        stage('Deploy Using Serverless') {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CREDENTIALS]]) {
                     bat '''
                     venv\\Scripts\\activate.bat
-                    "C:\\Program Files\\Amazon\\AWSSAMCLI\\bin\\sam.exe" deploy --no-fail-on-empty-changeset --stack-name csv-project --capabilities CAPABILITY_IAM --region us-east-2
+                    set AWS_ACCESS_KEY_ID=%AWS_ACCESS_KEY_ID%
+                    set AWS_SECRET_ACCESS_KEY=%AWS_SECRET_ACCESS_KEY%
+                    set AWS_SESSION_TOKEN=%AWS_SESSION_TOKEN%
+                    serverless deploy --stage dev --region us-east-2
                     '''
                 }
             }

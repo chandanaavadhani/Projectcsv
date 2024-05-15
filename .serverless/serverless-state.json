@@ -186,7 +186,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/csv-project/dev/1715740454483-2024-05-15T02:34:14.483Z/csv-project.zip"
+                "S3Key": "serverless/csv-project/dev/1715797050245-2024-05-15T18:17:30.245Z/csv-project.zip"
               },
               "Handler": "lambda_function.lambda_handler",
               "Runtime": "python3.12",
@@ -204,14 +204,14 @@
               "ProcessUploadLogGroup"
             ]
           },
-          "ProcessUploadLambdaVersionHSKIQaGzv0d0LRGPGaw9RVesYQ2XceeAkcEu3vTsriM": {
+          "ProcessUploadLambdaVersionX7Wa1AqNvhdjK5OKRdyXcJCIuBqndSFk2lu8me3m0": {
             "Type": "AWS::Lambda::Version",
             "DeletionPolicy": "Retain",
             "Properties": {
               "FunctionName": {
                 "Ref": "ProcessUploadLambdaFunction"
               },
-              "CodeSha256": "IsF9DMTgWTE1OBWkiLpT4jBNRUzUMCymmDI+Hhlkdrk="
+              "CodeSha256": "KB2Ua2B7l3p0ALqb3vk7vfz2MvIxlktV7TrZrEm8r7U="
             }
           },
           "S3BucketMytriggerbucketcsvprsr": {
@@ -287,7 +287,7 @@
           "ProcessUploadLambdaFunctionQualifiedArn": {
             "Description": "Current Lambda function version",
             "Value": {
-              "Ref": "ProcessUploadLambdaVersionHSKIQaGzv0d0LRGPGaw9RVesYQ2XceeAkcEu3vTsriM"
+              "Ref": "ProcessUploadLambdaVersionX7Wa1AqNvhdjK5OKRdyXcJCIuBqndSFk2lu8me3m0"
             },
             "Export": {
               "Name": "sls-csv-project-dev-ProcessUploadLambdaFunctionQualifiedArn"
@@ -402,7 +402,7 @@
         "timeout": 6,
         "runtime": "python3.12",
         "vpc": {},
-        "versionLogicalId": "ProcessUploadLambdaVersionHSKIQaGzv0d0LRGPGaw9RVesYQ2XceeAkcEu3vTsriM"
+        "versionLogicalId": "ProcessUploadLambdaVersionX7Wa1AqNvhdjK5OKRdyXcJCIuBqndSFk2lu8me3m0"
       }
     },
     "configValidationMode": "warn",
@@ -421,7 +421,7 @@
     "artifact": "C:\\Users\\chand\\Desktop\\projects\\Python\\csvProject\\.serverless\\csv-project.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/csv-project/dev/1715740454483-2024-05-15T02:34:14.483Z",
+    "artifactDirectoryName": "serverless/csv-project/dev/1715797050245-2024-05-15T18:17:30.245Z",
     "artifact": "csv-project.zip"
   }
 }
