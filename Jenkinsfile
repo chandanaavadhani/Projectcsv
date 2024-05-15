@@ -37,7 +37,10 @@ pipeline {
         stage('Deploy to AWS') {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding', credentialsId: AWS_CREDENTIALS]]) {
-                    bat 'sam deploy --no-fail-on-empty-changeset --stack-name my-lambda-function --capabilities CAPABILITY_IAM --region %AWS_DEFAULT_REGION%'
+                    bat '''
+                    venv\\Scripts\\activate.bat
+                    "C:\\Program Files\\Amazon\\AWSSAMCLI\\bin\\sam.exe" deploy --no-fail-on-empty-changeset --stack-name my-lambda-function --capabilities CAPABILITY_IAM --region us-east-2
+                    '''
                 }
             }
         }
