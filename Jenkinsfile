@@ -27,7 +27,10 @@ pipeline {
 
         stage('Build Lambda Package') {
             steps {
-                bat 'sam build'
+                bat '''
+                venv\\Scripts\\activate.bat
+                "C:\\Program Files\\Amazon\\AWSSAMCLI\\bin\\sam.exe" build
+                '''
             }
         }
 
