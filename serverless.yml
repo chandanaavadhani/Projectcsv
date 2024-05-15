@@ -20,10 +20,3 @@ functions:
           event: s3:ObjectCreated:*
           rules:
             - suffix: .csv
-
-resources:
-  Resources:
-    MyTriggerBucket:
-      Type: "AWS::S3::Bucket"
-      Properties:
-        BucketName: my-trigger-bucket-csv-prsr

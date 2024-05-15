@@ -186,7 +186,7 @@
                 "S3Bucket": {
                   "Ref": "ServerlessDeploymentBucket"
                 },
-                "S3Key": "serverless/csv-project/dev/1715739393754-2024-05-15T02:16:33.754Z/csv-project.zip"
+                "S3Key": "serverless/csv-project/dev/1715740454483-2024-05-15T02:34:14.483Z/csv-project.zip"
               },
               "Handler": "lambda_function.lambda_handler",
               "Runtime": "python3.12",
@@ -272,12 +272,6 @@
               "SourceAccount": {
                 "Ref": "AWS::AccountId"
               }
-            }
-          },
-          "MyTriggerBucket": {
-            "Type": "AWS::S3::Bucket",
-            "Properties": {
-              "BucketName": "my-trigger-bucket-csv-prsr"
             }
           }
         },
@@ -411,17 +405,6 @@
         "versionLogicalId": "ProcessUploadLambdaVersionHSKIQaGzv0d0LRGPGaw9RVesYQ2XceeAkcEu3vTsriM"
       }
     },
-    "resources": {
-      "Resources": {
-        "MyTriggerBucket": {
-          "Type": "AWS::S3::Bucket",
-          "Properties": {
-            "BucketName": "my-trigger-bucket-csv-prsr"
-          }
-        }
-      },
-      "Outputs": {}
-    },
     "configValidationMode": "warn",
     "serviceFilename": "serverless.yml",
     "initialServerlessConfig": {
@@ -431,9 +414,6 @@
       },
       "functions": {
         "$ref": "$[\"service\"][\"functions\"]"
-      },
-      "resources": {
-        "$ref": "$[\"service\"][\"resources\"]"
       }
     },
     "layers": {},
@@ -441,7 +421,7 @@
     "artifact": "C:\\Users\\chand\\Desktop\\projects\\Python\\csvProject\\.serverless\\csv-project.zip"
   },
   "package": {
-    "artifactDirectoryName": "serverless/csv-project/dev/1715739393754-2024-05-15T02:16:33.754Z",
+    "artifactDirectoryName": "serverless/csv-project/dev/1715740454483-2024-05-15T02:34:14.483Z",
     "artifact": "csv-project.zip"
   }
 }
